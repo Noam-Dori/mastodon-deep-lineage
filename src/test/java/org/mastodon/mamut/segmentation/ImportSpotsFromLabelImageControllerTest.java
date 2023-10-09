@@ -53,7 +53,7 @@ public class ImportSpotsFromLabelImageControllerTest
 		ImportSpotsFromLabelImageController controller =
 				new ImportSpotsFromLabelImageController( model, timePoints, img, context, voxelDimensions, 1 );
 
-		controller.createSpotsFromLabels();
+		controller.createSpotsFromLabelImage();
 
 		Iterator< Spot > iter = model.getGraph().vertices().iterator();
 		Spot spot = iter.next();

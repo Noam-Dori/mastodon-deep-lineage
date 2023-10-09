@@ -43,7 +43,7 @@ public class ImportSpotsFromLabelImageView implements Command
 	{
 		ImportSpotsFromLabelImageController controller =
 				new ImportSpotsFromLabelImageController( appModel, context, labelChannelIndex, sigma );
-		controller.createSpotsFromLabels();
+		controller.createSpotsFromLabelImage();
 	}
 
 }

@@ -69,7 +69,7 @@ public class ImportSpotsFromLabelImageController
 	 * Converts label images to (spot) ellipsoids.<p>
 	 * The method runs twice through each image (i.e. each frame) read. Once to determine maximum/minimum values for array initialization, and once to do summation for covariance & mean.
 	 */
-	public void createSpotsFromLabels()
+	public void createSpotsFromLabelImage()
 	{
 		int numTimepoints = frames.size();
 
