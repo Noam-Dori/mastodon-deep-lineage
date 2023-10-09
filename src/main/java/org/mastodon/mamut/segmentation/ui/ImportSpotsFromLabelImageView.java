@@ -1,7 +1,7 @@
 package org.mastodon.mamut.segmentation.ui;
 
 import org.mastodon.mamut.MamutAppModel;
-import org.mastodon.mamut.segmentation.ImportSpotFromLabelsController;
+import org.mastodon.mamut.segmentation.ImportSpotsFromLabelImageController;
 import org.scijava.Context;
 import org.scijava.ItemVisibility;
 import org.scijava.command.Command;
@@ -9,7 +9,7 @@ import org.scijava.plugin.Parameter;
 import org.scijava.plugin.Plugin;
 
 @Plugin(type = Command.class, label = "Import spots from labels")
-public class ImportSpotsFromLabelsView implements Command
+public class ImportSpotsFromLabelImageView implements Command
 {
 	private static final int WIDTH = 15;
 
@@ -39,7 +39,8 @@ public class ImportSpotsFromLabelsView implements Command
 	@Override
 	public void run()
 	{
-		ImportSpotFromLabelsController controller = new ImportSpotFromLabelsController( appModel, context, labelChannelIndex, sigma );
+		ImportSpotsFromLabelImageController
+				controller = new ImportSpotsFromLabelImageController( appModel, context, labelChannelIndex, sigma );
 		controller.createSpotsFromLabels();
 	}
 

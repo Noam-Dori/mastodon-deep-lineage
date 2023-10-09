@@ -27,7 +27,7 @@ import java.util.List;
 
 import static java.math.BigInteger.valueOf;
 
-public class ImportSpotFromLabelsController
+public class ImportSpotsFromLabelImageController
 {
 
 	private static final Logger logger = LoggerFactory.getLogger( MethodHandles.lookup().lookupClass() );
@@ -43,7 +43,7 @@ public class ImportSpotFromLabelsController
 	private final VoxelDimensions voxelDimensions;
 	private final double sigma;
 
-	public ImportSpotFromLabelsController( final MamutAppModel appModel, final Context context, int labelChannelIndex, double sigma )
+	public ImportSpotsFromLabelImageController( final MamutAppModel appModel, final Context context, int labelChannelIndex, double sigma )
 	{
 		// NB: Use the dimensions of the first source and the first time point only without checking if they are equal in other sources and time points.
 		this( appModel.getModel(),
@@ -52,7 +52,7 @@ public class ImportSpotFromLabelsController
 				appModel.getSharedBdvData().getSpimData().getSequenceDescription().getViewSetups().get( 0 ).getVoxelSize(), sigma);
 	}
 
-	protected ImportSpotFromLabelsController(
+	protected ImportSpotsFromLabelImageController(
 			final Model model, final List< TimePoint > timePoints, final Source< ? extends RealType< ? > > source, final Context context,
 			VoxelDimensions voxelDimensions, double sigma)
 	{

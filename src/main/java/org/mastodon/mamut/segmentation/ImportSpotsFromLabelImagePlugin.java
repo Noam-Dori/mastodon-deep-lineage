@@ -4,7 +4,7 @@ import org.mastodon.app.ui.ViewMenuBuilder;
 import org.mastodon.mamut.MamutAppModel;
 import org.mastodon.mamut.plugin.MamutPlugin;
 import org.mastodon.mamut.plugin.MamutPluginAppModel;
-import org.mastodon.mamut.segmentation.ui.ImportSpotsFromLabelsView;
+import org.mastodon.mamut.segmentation.ui.ImportSpotsFromLabelImageView;
 import org.scijava.command.CommandService;
 import org.scijava.plugin.Parameter;
 import org.scijava.plugin.Plugin;
@@ -20,7 +20,7 @@ import static org.mastodon.app.ui.ViewMenuBuilder.menu;
 
 @SuppressWarnings("unused")
 @Plugin(type = MamutPlugin.class)
-public class ImportEllipsoidsFromLabelsPlugin implements MamutPlugin
+public class ImportSpotsFromLabelImagePlugin implements MamutPlugin
 {
 	private static final String IMPORT_SPOTS_FROM_LABELS = "Import spots from labels";
 
@@ -35,7 +35,7 @@ public class ImportEllipsoidsFromLabelsPlugin implements MamutPlugin
 	private CommandService commandService;
 
 	@SuppressWarnings("unused")
-	public ImportEllipsoidsFromLabelsPlugin()
+	public ImportSpotsFromLabelImagePlugin()
 	{
 		importSpotsFromLabels = new RunnableAction( IMPORT_SPOTS_FROM_LABELS, this::importSpotsFromLabels );
 	}
@@ -60,6 +60,6 @@ public class ImportEllipsoidsFromLabelsPlugin implements MamutPlugin
 
 	private void importSpotsFromLabels()
 	{
-		commandService.run( ImportSpotsFromLabelsView.class, true, "appModel", appModel );
+		commandService.run( ImportSpotsFromLabelImageView.class, true, "appModel", appModel );
 	}
 }

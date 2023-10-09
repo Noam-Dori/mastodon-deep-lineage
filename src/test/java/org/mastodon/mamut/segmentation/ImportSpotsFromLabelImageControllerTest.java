@@ -23,7 +23,7 @@ import java.util.List;
 
 import static org.junit.Assert.assertTrue;
 
-public class ImportSpotFromLabelsControllerTest
+public class ImportSpotsFromLabelImageControllerTest
 {
 	private Model model;
 
@@ -46,7 +46,8 @@ public class ImportSpotFromLabelsControllerTest
 		TimePoint timePoint = new TimePoint( timepoint );
 		List< TimePoint > timePoints = Collections.singletonList( timePoint );
 		VoxelDimensions voxelDimensions = new FinalVoxelDimensions("um", 0.16, 0.16, 1);
-		ImportSpotFromLabelsController controller = new ImportSpotFromLabelsController(model, timePoints, img, context, voxelDimensions, 2.2);
+		ImportSpotsFromLabelImageController
+				controller = new ImportSpotsFromLabelImageController( model, timePoints, img, context, voxelDimensions, 2.2 );
 
 		controller.createSpotsFromLabels();
 
