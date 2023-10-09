@@ -1,7 +1,7 @@
-package org.mastodon.mamut.segment.ui;
+package org.mastodon.mamut.segmentation.ui;
 
 import org.mastodon.mamut.MamutAppModel;
-import org.mastodon.mamut.segment.ImportSpotFromLabelsController;
+import org.mastodon.mamut.segmentation.ImportSpotFromLabelsController;
 import org.scijava.Context;
 import org.scijava.ItemVisibility;
 import org.scijava.command.Command;

@@ -1,10 +1,10 @@
-package org.mastodon.mamut.segment;
+package org.mastodon.mamut.segmentation;
 
 import org.mastodon.app.ui.ViewMenuBuilder;
 import org.mastodon.mamut.MamutAppModel;
 import org.mastodon.mamut.plugin.MamutPlugin;
 import org.mastodon.mamut.plugin.MamutPluginAppModel;
-import org.mastodon.mamut.segment.ui.SegmentUsingEllipsoidsView;
+import org.mastodon.mamut.segmentation.ui.SegmentUsingEllipsoidsView;
 import org.scijava.command.CommandService;
 import org.scijava.plugin.Parameter;
 import org.scijava.plugin.Plugin;

@@ -1,8 +1,8 @@
-package org.mastodon.mamut.segment.ui;
+package org.mastodon.mamut.segmentation.ui;
 
 import org.mastodon.mamut.MamutAppModel;
-import org.mastodon.mamut.segment.SegmentUsingEllipsoidsController;
-import org.mastodon.mamut.segment.config.LabelOptions;
+import org.mastodon.mamut.segmentation.SegmentUsingEllipsoidsController;
+import org.mastodon.mamut.segmentation.config.LabelOptions;
 import org.scijava.Context;
 import org.scijava.ItemVisibility;
 import org.scijava.command.Command;

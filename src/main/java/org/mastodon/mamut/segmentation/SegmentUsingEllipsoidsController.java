@@ -1,4 +1,4 @@
-package org.mastodon.mamut.segment;
+package org.mastodon.mamut.segmentation;
 
 import bdv.util.AbstractSource;
 import bdv.util.RandomAccessibleIntervalSource;
@@ -34,7 +34,7 @@ import org.mastodon.mamut.feature.SpotTrackIDFeature;
 import org.mastodon.mamut.model.Model;
 import org.mastodon.mamut.model.Spot;
 import org.mastodon.mamut.model.branch.BranchSpot;
-import org.mastodon.mamut.segment.config.LabelOptions;
+import org.mastodon.mamut.segmentation.config.LabelOptions;
 import org.mastodon.spatial.SpatialIndex;
 import org.scijava.Context;
 import org.scijava.app.StatusService;

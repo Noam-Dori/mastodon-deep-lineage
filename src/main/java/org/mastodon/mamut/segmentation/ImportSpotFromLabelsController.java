@@ -1,4 +1,4 @@
-package org.mastodon.mamut.segment;
+package org.mastodon.mamut.segmentation;
 
 import bdv.viewer.Source;
 import mpicbg.spim.data.sequence.TimePoint;

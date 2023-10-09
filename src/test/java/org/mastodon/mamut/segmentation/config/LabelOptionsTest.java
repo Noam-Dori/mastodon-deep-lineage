@@ -1,4 +1,4 @@
-package org.mastodon.mamut.segment.config;
+package org.mastodon.mamut.segmentation.config;
 
 import org.junit.Test;
 
