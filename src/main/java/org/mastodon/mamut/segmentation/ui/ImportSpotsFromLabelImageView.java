@@ -1,7 +1,7 @@
-package org.mastodon.mamut.segment.ui;
+package org.mastodon.mamut.segmentation.ui;
 
 import org.mastodon.mamut.MamutAppModel;
-import org.mastodon.mamut.segment.ImportSpotFromLabelsController;
+import org.mastodon.mamut.segmentation.ImportSpotsFromLabelImageController;
 import org.scijava.Context;
 import org.scijava.ItemVisibility;
 import org.scijava.command.Command;
@@ -9,7 +9,7 @@ import org.scijava.plugin.Parameter;
 import org.scijava.plugin.Plugin;
 
 @Plugin(type = Command.class, label = "Import spots from labels")
-public class ImportSpotsFromLabelsView implements Command
+public class ImportSpotsFromLabelImageView implements Command
 {
 	private static final int WIDTH = 15;
 
@@ -30,17 +30,20 @@ public class ImportSpotsFromLabelsView implements Command
 	@Parameter
 	private Context context;
 
+	@SuppressWarnings("all")
 	@Parameter(label = "Channel index of labels", min = "0")
 	private int labelChannelIndex = 0;
 
+	@SuppressWarnings("all")
 	@Parameter(label = "Sigma", min = "0", description = "#deviations from center to form border")
 	private double sigma = 2.2;
 
 	@Override
 	public void run()
 	{
-		ImportSpotFromLabelsController controller = new ImportSpotFromLabelsController( appModel, context, labelChannelIndex, sigma );
-		controller.createSpotsFromLabels();
+		ImportSpotsFromLabelImageController controller =
+				new ImportSpotsFromLabelImageController( appModel, context, labelChannelIndex, sigma );
+		controller.createSpotsFromLabelImage();
 	}
 
 }

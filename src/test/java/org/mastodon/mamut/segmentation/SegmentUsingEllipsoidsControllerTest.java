@@ -1,4 +1,4 @@
-package org.mastodon.mamut.segment;
+package org.mastodon.mamut.segmentation;
 
 import bdv.util.AbstractSource;
 import bdv.util.RandomAccessibleIntervalSource;
@@ -19,7 +19,7 @@ import org.mastodon.mamut.model.ModelGraph;
 import org.mastodon.mamut.model.Spot;
 import org.mastodon.mamut.model.branch.BranchSpot;
 import org.mastodon.mamut.model.branch.ModelBranchGraph;
-import org.mastodon.mamut.segment.config.LabelOptions;
+import org.mastodon.mamut.segmentation.config.LabelOptions;
 import org.scijava.Context;
 
 import java.io.File;
@@ -29,6 +29,7 @@ import java.util.Collections;
 import java.util.List;
 
 import static org.junit.Assert.assertEquals;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThrows;
 
 public class SegmentUsingEllipsoidsControllerTest
@@ -70,9 +71,9 @@ public class SegmentUsingEllipsoidsControllerTest
 		File outputSpot = getTempFile( "resultSpot" );
 		File outputBranchSpot = getTempFile( "resultBranchSpot" );
 		File outputTrack = getTempFile( "resultTrack" );
-		segmentUsingEllipsoidsController.saveEllipsoidSegmentationToFile( LabelOptions.SPOT_ID, outputSpot, false );
-		segmentUsingEllipsoidsController.saveEllipsoidSegmentationToFile( LabelOptions.BRANCH_SPOT_ID, outputBranchSpot, false );
-		segmentUsingEllipsoidsController.saveEllipsoidSegmentationToFile( LabelOptions.TRACK_ID, outputTrack, false );
+		segmentUsingEllipsoidsController.saveEllipsoidSegmentationToFile( LabelOptions.SPOT_ID, outputSpot, false, 1 );
+		segmentUsingEllipsoidsController.saveEllipsoidSegmentationToFile( LabelOptions.BRANCH_SPOT_ID, outputBranchSpot, false, 1 );
+		segmentUsingEllipsoidsController.saveEllipsoidSegmentationToFile( LabelOptions.TRACK_ID, outputTrack, false, 1 );
 
 		ImgOpener imgOpener = new ImgOpener( context );
 		SCIFIOImgPlus< IntType > imgSpot = getIntTypeSCIFIOImgPlus( imgOpener, outputSpot );
@@ -80,6 +81,11 @@ public class SegmentUsingEllipsoidsControllerTest
 		SCIFIOImgPlus< IntType > imgTrack = getIntTypeSCIFIOImgPlus( imgOpener, outputTrack );
 
 		// check that the spot id / branchSpot id / track id is used as value in the center of the spot
+		assertNotNull( imgSpot );
+		assertEquals( 3, imgSpot.dimensionsAsLongArray().length );
+		assertEquals( 100, imgSpot.dimension( 0 ) );
+		assertEquals( 100, imgSpot.dimension( 1 ) );
+		assertEquals( 100, imgSpot.dimension( 2 ) );
 		assertEquals( spot.getInternalPoolIndex() + SegmentUsingEllipsoidsController.LABEL_ID_OFFSET, imgSpot.getAt( center ).get() );
 		assertEquals(
 				branchSpot.getInternalPoolIndex() + SegmentUsingEllipsoidsController.LABEL_ID_OFFSET, imgBranchSpot.getAt( center ).get() );
@@ -114,9 +120,9 @@ public class SegmentUsingEllipsoidsControllerTest
 		file.deleteOnExit();
 		assertThrows(
 				IllegalArgumentException.class,
-				() -> controller.saveEllipsoidSegmentationToFile( LabelOptions.SPOT_ID, null, false )
+				() -> controller.saveEllipsoidSegmentationToFile( LabelOptions.SPOT_ID, null, false, 1 )
 		);
-		assertThrows( IllegalArgumentException.class, () -> controller.saveEllipsoidSegmentationToFile( null, file, false ) );
+		assertThrows( IllegalArgumentException.class, () -> controller.saveEllipsoidSegmentationToFile( null, file, false, 1 ) );
 	}
 
 	private static AbstractSource< IntType > createRandomSource()
